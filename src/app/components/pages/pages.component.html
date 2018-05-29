@@ -1,0 +1,19 @@
+<div id="main-wrapper">
+    <!-- header -->
+    <app-header></app-header>
+    <!-- end header -->
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+    <!-- End sidebar -->
+    <div class="page-wrapper">
+        <!-- Pagination -->
+        <div class="container-fluid">
+            <app-breadcrumbs></app-breadcrumbs>
+            <!-- end pagination -->
+        </div>
+        <!-- Start page -->
+        <router-outlet></router-outlet>
+        <!-- END PAGE -->
+        <app-footer></app-footer>
+    </div>
+</div>
