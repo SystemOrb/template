@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-sm-6">
+        <form class="form-material">
+            <button (click)="incrementProgress('sum')" type="button" class="btn waves-effect waves-light btn-primary">
+      Incrementar
+  </button>
+            <input #elementRef placeholder="%" name="incrementor" minlength="0" maxlength="100" (ngModelChange)="inputChanges($event)" [(ngModel)]="progress" type="number" class="form-control form-control-line">
+            <button (click)="incrementProgress('rest')" type="button" class="btn waves-effect waves-light btn-danger">
+            Decrementar
+        </button>
+        </form>
+    </div>
+</div>

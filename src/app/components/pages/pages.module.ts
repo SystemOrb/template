@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
+
+
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
@@ -12,12 +16,22 @@ import { AuthComponent } from './login/auth.component';
 // MODULES
 import { SharedModule } from '../shared/shared.module';
 import { PagesRoutingModule } from './pages.routes';
+import { ProgressComponent } from './progress/progress.component';
+import { IncrementorComponent } from '../childs/incrementor/incrementor.component';
+import { ChartComponent } from './chart/chart.component';
+import { DonasComponent } from '../childs/donas/donas.component';
+import { ThemeComponent } from './theme/theme.component';
+
+
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    FormsModule,
+    ChartsModule
+
   ],
   declarations: [
     PagesComponent,
@@ -27,7 +41,12 @@ import { PagesRoutingModule } from './pages.routes';
     AuthComponent,
     LoginComponent,
     RegisterComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    ProgressComponent,
+    IncrementorComponent,
+    ChartComponent,
+    DonasComponent,
+    ThemeComponent
   ],
   exports: [
     PagesComponent,
@@ -37,7 +56,10 @@ import { PagesRoutingModule } from './pages.routes';
     AuthComponent,
     LoginComponent,
     RegisterComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    IncrementorComponent,
+    DonasComponent
+
   ]
 })
 export class PagesModule { }
