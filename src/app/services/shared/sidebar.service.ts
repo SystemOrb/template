@@ -11,7 +11,9 @@ export class SidebarService {
       submenu: [
         {title: 'Barra de progreso', route: '/progress'},
         {title: 'Temas', route: '/themes'},
-        {title: 'Gráficas', route: '/charts'}
+        {title: 'Gráficas', route: '/charts'},
+        {title: 'Promesas', route: '/promises'},
+        {title: 'rxjs', route: '/rxjs'}
       ]
     }
   ];

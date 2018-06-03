@@ -21,6 +21,8 @@ import { IncrementorComponent } from '../childs/incrementor/incrementor.componen
 import { ChartComponent } from './chart/chart.component';
 import { DonasComponent } from '../childs/donas/donas.component';
 import { ThemeComponent } from './theme/theme.component';
+import { PromisesComponent } from './promises/promises.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -46,7 +48,9 @@ import { ThemeComponent } from './theme/theme.component';
     IncrementorComponent,
     ChartComponent,
     DonasComponent,
-    ThemeComponent
+    ThemeComponent,
+    PromisesComponent,
+    RxjsComponent
   ],
   exports: [
     PagesComponent,

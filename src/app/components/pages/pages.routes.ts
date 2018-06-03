@@ -7,6 +7,8 @@ import { ContactComponent } from './contact/contact.component';
 import { ProgressComponent } from './progress/progress.component';
 import { ChartComponent } from './chart/chart.component';
 import { ThemeComponent } from './theme/theme.component';
+import { PromisesComponent } from './promises/promises.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -15,12 +17,14 @@ const routes: Routes = [
         path: '',
         component: PagesComponent,
         children: [
-            { path: 'dashboard', component: DashboardComponent },
-            { path: 'about', component: AboutComponent  },
-            { path: 'contact', component: ContactComponent  },
-            { path: 'progress', component: ProgressComponent  },
-            { path: 'charts', component: ChartComponent  },
-            { path: 'themes', component: ThemeComponent  },
+            { path: 'dashboard', component: DashboardComponent, data: {title: 'Panel de control'} },
+            { path: 'about', component: AboutComponent, data: {title: 'Perfil'}  },
+            { path: 'contact', component: ContactComponent, data: {title: 'Contacto'}  },
+            { path: 'progress', component: ProgressComponent, data: {title: 'Barra de progreso'}  },
+            { path: 'charts', component: ChartComponent, data: {title: 'Gráficas'}  },
+            { path: 'themes', component: ThemeComponent, data: {title: 'Temas'}  },
+            { path: 'promises', component: PromisesComponent, data: {title: 'Promesas'}  },
+            { path: 'rxjs', component: RxjsComponent, data: {title: 'RxJS'}  },
             { path: '', pathMatch: 'full', redirectTo: '/dashboard' }
         ]
     },
