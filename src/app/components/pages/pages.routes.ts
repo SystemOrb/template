@@ -9,6 +9,7 @@ import { ChartComponent } from './chart/chart.component';
 import { ThemeComponent } from './theme/theme.component';
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { LoginGuard } from '../../services/services.index';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
     {
         path: '',
         component: PagesComponent,
+        canActivate: [LoginGuard],
         children: [
             { path: 'dashboard', component: DashboardComponent, data: {title: 'Panel de control'} },
             { path: 'about', component: AboutComponent, data: {title: 'Perfil'}  },

@@ -1,9 +1,11 @@
+// Angular Dependencies
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
-
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+ // Components
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
@@ -32,7 +34,9 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     SharedModule,
     PagesRoutingModule,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    ReactiveFormsModule,
+    HttpClientModule
 
   ],
   declarations: [

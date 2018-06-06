@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedService, SidebarService, SettingsService } from './services.index';
+import { SharedService, SidebarService, SettingsService, UserService, LoginGuard } from './services.index';
 @NgModule({
   imports: [
     CommonModule
@@ -8,7 +8,9 @@ import { SharedService, SidebarService, SettingsService } from './services.index
   providers: [
     SharedService,
     SidebarService,
-    SettingsService
+    SettingsService,
+    UserService,
+    LoginGuard
   ],
   declarations: []
 })
