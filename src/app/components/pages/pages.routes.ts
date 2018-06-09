@@ -10,6 +10,10 @@ import { ThemeComponent } from './theme/theme.component';
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuard } from '../../services/services.index';
+import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './admin/usuarios/usuarios.component';
+import { HospitalesComponent } from './admin/hospitales/hospitales.component';
+import { MedicosComponent } from './admin/medicos/medicos.component';
 
 
 
@@ -27,6 +31,11 @@ const routes: Routes = [
             { path: 'themes', component: ThemeComponent, data: {title: 'Temas'}  },
             { path: 'promises', component: PromisesComponent, data: {title: 'Promesas'}  },
             { path: 'rxjs', component: RxjsComponent, data: {title: 'RxJS'}  },
+            { path: 'profile', component: ProfileComponent, data: {title: 'Perfil'}  },
+            // admin routes
+            { path: 'usuarios', component: UsuariosComponent, data: {title: 'Usuarios Registrados'}  },
+            { path: 'Hospital', component: HospitalesComponent, data: {title: 'Hospitales Registrados'}  },
+            { path: 'Medicos', component: MedicosComponent, data: {title: 'Medicos Registrados'}  },
             { path: '', pathMatch: 'full', redirectTo: '/dashboard' }
         ]
     },

@@ -25,6 +25,13 @@ import { DonasComponent } from '../childs/donas/donas.component';
 import { ThemeComponent } from './theme/theme.component';
 import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ImagePipe } from '../../pipes/image.pipe';
+import { UsuariosComponent } from './admin/usuarios/usuarios.component';
+import { MedicosComponent } from './admin/medicos/medicos.component';
+import { HospitalesComponent } from './admin/hospitales/hospitales.component';
+import { ModalsComponent } from '../childs/modals/modals.component';
+
 
 
 
@@ -54,7 +61,12 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     DonasComponent,
     ThemeComponent,
     PromisesComponent,
-    RxjsComponent
+    RxjsComponent,
+    ProfileComponent,
+    UsuariosComponent,
+    MedicosComponent,
+    HospitalesComponent,
+    ModalsComponent
   ],
   exports: [
     PagesComponent,
@@ -66,7 +78,8 @@ import { RxjsComponent } from './rxjs/rxjs.component';
     RegisterComponent,
     NotfoundComponent,
     IncrementorComponent,
-    DonasComponent
+    DonasComponent,
+    ModalsComponent
 
   ]
 })

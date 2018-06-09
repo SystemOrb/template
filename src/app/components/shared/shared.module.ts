@@ -5,6 +5,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SharedRouteModule } from './shared.routes';
+import { ImagePipe } from '../../pipes/image.pipe';
+
 
 @NgModule({
   imports: [
@@ -15,13 +17,15 @@ import { SharedRouteModule } from './shared.routes';
     BreadcrumbsComponent,
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    ImagePipe
   ],
   exports: [
     BreadcrumbsComponent,
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    ImagePipe
   ]
 })
 export class SharedModule { }

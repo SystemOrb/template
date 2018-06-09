@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { UserData } from '../../models/users.models';
 import { HTTP_URL } from '../../config/config';
 import { map } from 'rxjs/operators';
+import { ArchivosService } from '../archivos/archivos.service';
+import swal from 'sweetalert';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +12,7 @@ export class UserService {
   token: string;
   _key: string;
   user: UserData;
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private fileService: ArchivosService) {
     this.loadWebData();
    }
    registerUser(user: UserData) {
@@ -53,6 +55,55 @@ export class UserService {
        })
      );
    }
+    /**************************************************************
+    * Update User
+    **************************************************************/
+     updateUser(user: UserData) {
+       const url = HTTP_URL + '/Usuarios/' + this._key + '?token=' + this.token;
+       return this._http.put(url, user).pipe(
+        map((response: any) => {
+          this.saveLocalStorage(this._key, this.token, response.uData);
+          return response.status;
+        }),
+       );
+     }
+     updateUserSpecif(user: UserData) {
+      const url = HTTP_URL + '/Usuarios/' + user._id + '?token=' + this.token;
+      return this._http.put(url, user).pipe(
+       map((response: any) => {
+         return response.status;
+       }),
+      );
+    }
+    /**************************************************************
+    * Update User photo
+    **************************************************************/
+     updateProfilePicture(image: File, _id: string) {
+        this.fileService.uploadFile(image, 'usuarios', _id)
+        .then( (response: any)  => {
+           this.saveLocalStorage(_id, this.token, response.usuario);
+           swal({
+            title: 'Foto actualizada',
+            text: 'Tu foto de perfil ha sido actualizada',
+            icon: 'success',
+          });
+        })
+        .catch( (response: any) => {
+          console.error(response);
+        });
+     }
+     updateProfilePictureResumed(image: File, _id: string) {
+       this.fileService.uploadFile2(image, 'usuarios', _id).subscribe(
+         (response: any) => {
+          this.saveLocalStorage(_id, this.token, response.usuario);
+          swal({
+            title: 'Foto actualizada',
+            text: 'Tu foto de perfil ha sido actualizada',
+            icon: 'success',
+          });
+         },
+       );
+     }
       /**************************************************************
     * Auth Google
     **************************************************************/
@@ -76,5 +127,27 @@ export class UserService {
       this.token = token;
       this._key = _id;
       this.user = user;
+   }
+   /**************************************************************
+    * OBTENER TODOS LOS USUARIOS
+    **************************************************************/
+   getAllUsers(offset: number) {
+     const url = HTTP_URL + '/Usuarios?offset=' + offset;
+     return this._http.get(url).pipe(
+       map( (response: any) => {
+           return response;
+       })
+     );
+   }
+   /**************************************************************
+    * DELETE USER
+    **************************************************************/
+   deleteUser(_id: string) {
+      const url = HTTP_URL + '/Usuarios/' + _id + '?token=' + this.token;
+      return this._http.delete(url).pipe(
+        map( (response: any)  => {
+          return response;
+        }),
+      );
    }
 }

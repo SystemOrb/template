@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from './services/settings/settings.service';
+import swal from 'sweetalert';
 declare function init_plugins();
 @Component({
   selector: 'app-root',

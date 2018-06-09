@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Sample Horizontal Form with Icons</h4>
+                <h6 class="card-subtitle">Use Bootstrap's predefined grid classes for horizontal form</h6>
+                <form (ngSubmit)="updateUser()" class="form-horizontal p-t-20">
+                    <div class="form-group row">
+                        <label for="exampleInputuname3" class="col-sm-3 control-label">Nombre</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input required [(ngModel)]="name" name="name" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputEmail3" class="col-sm-3 control-label">Email*</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-email"></i></div>
+                                <input required [disabled]="GOOGLE" [(ngModel)]="email" name="email" type="email" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row m-b-0">
+                        <div class="offset-sm-3 col-sm-9">
+                            <button type="submit" class="btn btn-success btn-block waves-effect waves-light">Actualizar perfil</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-title">Foto de perfil</h4>
+                <h6 class="card-subtitle"></h6>
+                <form class="form-horizontal p-t-20">
+                    <div class="form-group row">
+                        <!-- <label for="exampleInputuname3" class="col-sm-3 control-label">
+                          <button>asdasd</button>
+                        </label> -->
+                        <div *ngIf="!imagePreview" class="u-img" align="center">
+                            <img style="width:150px;margin-left:3em" [src]="userProfile.img | image" alt="">
+                        </div>
+                        <div *ngIf="imagePreview" class="u-img" align="center">
+                            <img style="width:150px;margin-left:3em" [src]="imagePreview" alt="">
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="ti-user"></i></div>
+                                <input (change)="pictureChanged( $event.target.files[0] )" type="file" class="form-control">
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="form-group row m-b-0">
+                        <div class="offset-sm-3 col-sm-9">
+                            <button (click)="upload()" [disabled]="!image" type="button" class="btn btn-success waves-effect waves-light">Actualizar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

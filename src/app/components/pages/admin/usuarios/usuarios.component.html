@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group form-material">
+                    <label> Buscar Usuario </label>
+                    <input type="text" class="form-control form-control-line" value=""> </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" align="center">
+    <div class="card col-12">
+        <div class="card-body">
+            <h4 class="card-title">Usuarios registrados</h4>
+            <h6 class="card-subtitle">Data table example</h6>
+            <div class="table-responsive m-t-40">
+                <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
+                    <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
+                        <thead>
+                            <tr role="row">
+                                <th class="sorting_asc" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 190px;"></th>
+                                <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 301px;">Nombre</th>
+                                <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 141px;">Email</th>
+                                <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 73px;">ROL</th>
+                                <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 132px;">Autenticación</th>
+                                <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 111px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuarioData of USUARIOS" role="row" class="odd">
+                                <td class="sorting_1">
+                                    <img (click)="showModal(usuarioData)" style="width: 40px;cursor: pointer" class="img-circle img-thumbnail" [src]="usuarioData.img | image" [alt]="usuarioData.nombre">
+                                </td>
+                                <td> {{ usuarioData.nombre }} </td>
+                                <td> {{ usuarioData.email }} </td>
+                                <td>
+                                    <div class="form-group">
+                                        <select [(ngModel)]="usuarioData.role" class="form-control">
+                                            <option>USER_ROLE</option>
+                                            <option>ADMIN_ROLE</option>         
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span *ngIf="!usuarioData.GOOGLE" class="tag label label-info">Login</span>
+                                    <span *ngIf="usuarioData.GOOGLE" class="tag label label-danger">Google</span>
+                                </td>
+                                <td>
+                                    <button (click)="saveUser(usuarioData)" class="btn btn-primary">
+                                      <span class="fa fa-save"></span>
+                                    </button>
+                                    <button (click)="deleteUser(usuarioData._id)" style="margin-left:5px" class="btn btn-danger">
+                                       <span class="fa fa-trash-o"></span> 
+                                      </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="dataTables_info" id="myTable_info" role="status" aria-live="polite">Total de usuarios registrados&nbsp;<strong> {{ offset }} </strong> </div>
+                    <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+                        <a (click)="changePage(-5)" class="paginate_button previous">Anterior</a>
+                        <span>
+                       </span>
+                        <a (click)="changePage(+5)" class="paginate_button next">Siguiente</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

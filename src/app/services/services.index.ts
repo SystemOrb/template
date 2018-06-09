@@ -4,4 +4,6 @@ export { SidebarService } from './shared/sidebar.service';
 export { SharedService } from './shared/shared.service';
 export { UserService } from './users/user.service';
 export { LoginGuard } from './GUARDS/login.guard';
+export { ArchivosService } from './archivos/archivos.service';
+export { ModalService } from './modal/modal.service';
 

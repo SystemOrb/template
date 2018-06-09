@@ -14,9 +14,11 @@ import { APP_ROUTES } from './routes';
 import { ServicesModule } from './services/services.module';
 
 
+
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
 
    // DonasComponent
 
@@ -27,8 +29,6 @@ import { ServicesModule } from './services/services.module';
     APP_ROUTES,
     FormsModule,
     ServicesModule
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]
