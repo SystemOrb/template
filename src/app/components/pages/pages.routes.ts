@@ -14,15 +14,17 @@ import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './admin/usuarios/usuarios.component';
 import { HospitalesComponent } from './admin/hospitales/hospitales.component';
 import { MedicosComponent } from './admin/medicos/medicos.component';
+import { MedicoComponent } from './admin/medicos/medico.component';
+import { ExplorerComponent } from './explorer/explorer.component';
+import { AdminGuard } from '../../services/GUARDS/admin.guard';
 
 
 
 const routes: Routes = [
-    {
-        path: '',
+ /*       path: '',
         component: PagesComponent,
         canActivate: [LoginGuard],
-        children: [
+        children: [ */
             { path: 'dashboard', component: DashboardComponent, data: {title: 'Panel de control'} },
             { path: 'about', component: AboutComponent, data: {title: 'Perfil'}  },
             { path: 'contact', component: ContactComponent, data: {title: 'Contacto'}  },
@@ -33,12 +35,29 @@ const routes: Routes = [
             { path: 'rxjs', component: RxjsComponent, data: {title: 'RxJS'}  },
             { path: 'profile', component: ProfileComponent, data: {title: 'Perfil'}  },
             // admin routes
-            { path: 'usuarios', component: UsuariosComponent, data: {title: 'Usuarios Registrados'}  },
-            { path: 'Hospital', component: HospitalesComponent, data: {title: 'Hospitales Registrados'}  },
-            { path: 'Medicos', component: MedicosComponent, data: {title: 'Medicos Registrados'}  },
+            { path: 'usuarios', component: UsuariosComponent,
+              canActivate: [AdminGuard],
+              data: {title: 'Usuarios Registrados'}
+            },
+            { path: 'Hospital',
+             canActivate: [AdminGuard],
+             component: HospitalesComponent,
+             data: {title: 'Hospitales Registrados'}
+             },
+            { path: 'Medicos',
+            canActivate: [AdminGuard],
+            component: MedicosComponent,
+            data: {title: 'Medicos Registrados'}
+            },
+            { path: 'Medico/:id',
+            canActivate: [AdminGuard],
+            component: MedicoComponent,
+            data: {title: 'Actualizar medico'}
+        },
+            { path: 'search/:query', component: ExplorerComponent, data: {title: 'Buscador'}  },
             { path: '', pathMatch: 'full', redirectTo: '/dashboard' }
-        ]
-    },
+        /*]
+    },*/
 ];
 
 @NgModule({

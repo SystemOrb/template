@@ -8,10 +8,17 @@ import { RegisterComponent } from './components/pages/login/register.component';
 import { NotfoundComponent } from './components/pages/notfound/notfound.component';
 import { PagesComponent } from './components/pages/pages.component';
 import { AuthComponent } from './components/pages/login/auth.component';
-
+import { LoginGuard } from './services/services.index';
+import { PagesModule } from './components/pages/pages.module';
 
 
 const routes: Routes = [
+    {
+        path: '',
+        component: PagesComponent,
+        canActivate: [LoginGuard],
+        loadChildren: './components/pages/pages.module#PagesModule'
+    },
     { path: '**', component: NotfoundComponent },
 
 ];

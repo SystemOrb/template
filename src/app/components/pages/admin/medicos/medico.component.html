@@ -1,0 +1,45 @@
+<div class="row fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Control de medico</h4>
+                <form ngNativeValidate [formGroup]="form" (ngSubmit)="createMedico()" class="form-material m-t-40">
+                    <div class="form-group">
+                        <label>Nombre:</label>
+                        <input type="text" formControlName="nombre" [(ngModel)]="nombre" name="nombre" required class="form-control form-control-line" value="">
+                    </div>
+                    <div class="form-group">
+                        <label>Hospital</label>
+                        <select (change)="loadHospitalById( $event.target.value )" formControlName="Hospital" [(ngModel)]="Hospital" class="form-control" required name="hospital">
+                          <option *ngFor="let options of hospitales" [value]="options._id">
+                            {{ options.nombre }}
+                          </option>
+                  </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Guardar
+                    </button>
+                    <button [routerLink]="['/Medicos']" style="margin-left:5px" type="submit" class="btn btn-secondary">
+                      Cancelar
+                  </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Hospital</h4>
+                <img class="img-fluid img-thumbnail" [src]="imageHospital | image:'Hospital'" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Perfil Medico</h4>
+                <img (click)="showModal()" style="cursor:pointer" class="img-fluid img-thumbnail" [src]="image | image:'Medicos'" alt="">
+            </div>
+        </div>
+    </div>
+</div>

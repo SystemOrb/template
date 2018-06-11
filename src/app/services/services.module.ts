@@ -6,7 +6,10 @@ import { SharedService,
      UserService,
       LoginGuard,
        ArchivosService,
-      ModalService } from './services.index';
+      ModalService,
+    HospitalesService,
+  MedicoService,
+  AdminGuard} from './services.index';
 @NgModule({
   imports: [
     CommonModule
@@ -18,7 +21,10 @@ import { SharedService,
     UserService,
     LoginGuard,
     ArchivosService,
-    ModalService
+    ModalService,
+    HospitalesService,
+    MedicoService,
+    AdminGuard
   ],
   declarations: []
 })

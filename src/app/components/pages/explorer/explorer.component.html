@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Usuarios
+                </h4>
+                <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 190px;"></th>
+                            <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 301px;">Nombre</th>
+                            <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 141px;">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let usuarios of Usuarios" role="row" class="odd">
+                            <td class="sorting_1">
+                                <img style="width: 40px;cursor: pointer" class="img-circle img-thumbnail" [src]="usuarios.img | image">
+                            </td>
+                            <td>
+                                {{ usuarios.nombre }}
+                            </td>
+                            <td>
+
+                                <button class="btn btn-primary">
+                                <span class="fa fa-edit"></span>
+                              </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Medicos
+                </h4>
+                <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 190px;"></th>
+                            <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 301px;">Nombre</th>
+                            <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 141px;">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let medicos of Medicos" role="row" class="odd">
+                            <td class="sorting_1">
+                                <img style="width: 40px;cursor: pointer" class="img-circle img-thumbnail" [src]="medicos.img | image:'Medicos'">
+                            </td>
+                            <td>
+                                {{ medicos.nombre }}
+                            </td>
+                            <td>
+                                <a [routerLink]="['/Medico',medicos._id]" class="btn btn-primary">
+                                    <span class="fa fa-edit"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Hospitales
+                </h4>
+                <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
+                    <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 190px;"></th>
+                            <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 301px;">Nombre</th>
+                            <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 141px;">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let hospitales of Hospitales" role="row" class="odd">
+                            <td class="sorting_1">
+                                <img style="width: 40px;cursor: pointer" class="img-circle img-thumbnail" [src]="hospitales.img | image:'Hospital'">
+                            </td>
+                            <td>
+                                {{ hospitales.nombre }}
+                            </td>
+                            <td>
+                                <button class="btn btn-primary">
+                                <span class="fa fa-edit"></span>
+                              </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

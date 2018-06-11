@@ -23,5 +23,8 @@ export class HeaderComponent implements OnInit {
       console.error('ERROR al intentar cerrar sesión');
     }
   }
+  search(query: string) {
+    this._route.navigate(['/search', query]);
+  }
 
 }

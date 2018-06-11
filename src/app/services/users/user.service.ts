@@ -2,9 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserData } from '../../models/users.models';
 import { HTTP_URL } from '../../config/config';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { ArchivosService } from '../archivos/archivos.service';
 import swal from 'sweetalert';
+import { SidebarService } from '../services.index';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +15,10 @@ export class UserService {
   token: string;
   _key: string;
   user: UserData;
-  constructor(private _http: HttpClient, private fileService: ArchivosService) {
+  constructor(private _http: HttpClient,
+    private fileService: ArchivosService,
+    private menu: SidebarService,
+    private _route: Router) {
     this.loadWebData();
    }
    registerUser(user: UserData) {
@@ -51,7 +57,17 @@ export class UserService {
      return this._http.post(url, user).pipe(
        map( (response: any)  => {
           this.saveLocalStorage(response.key._id, response.sessionAuth, response.key); // Backend Response
+          this.menu.menu = response.menu;
           return response.status;
+       }),
+       catchError( (errorCatchable: any) => {
+        swal({
+          title: 'Error',
+          text: errorCatchable.error.message,
+          icon: 'error',
+        });
+          console.log(errorCatchable.error.message);
+          return new Observable<any>();
        })
      );
    }
@@ -112,6 +128,7 @@ export class UserService {
       return this._http.post(url, {token: GoogleToken}).pipe(
         map( (response: any) => {
           this.saveLocalStorage(response.key._id, response.sessionAuth, response.key); // Backend Response
+          this.menu.menu = response.menu;
           return response.status;
         }),
       );
@@ -149,5 +166,20 @@ export class UserService {
           return response;
         }),
       );
+   }
+    /**************************************************************
+    * Renovar el token automaticamente
+    **************************************************************/
+   renovaToken() {
+     const url = HTTP_URL + '/Usuarios/reloadToken?token=' + this.token;
+     return this._http.get(url).pipe(
+       map( (response: any) => {
+         return response;
+       }), catchError( (error: any) => {
+         this.logout();
+         this._route.navigate(['/auth']);
+         return new Observable<any>();
+       })
+     );
    }
 }

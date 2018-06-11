@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
     } else {
        email_ = this.email;
     }
-    const user = new UserData(this.name, email_, null);
+    const user = new UserData(this.name, email_, null, this._user._key);
     this._user.updateUser(user).subscribe(
       (response: boolean) => {
         if (response) {
