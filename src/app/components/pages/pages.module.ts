@@ -33,8 +33,6 @@ import { ExplorerComponent } from './explorer/explorer.component';
 import { SharedModule } from '../shared/shared.module';
 import { PagesRoutingModule } from './pages.routes';
 
-// Providers
-import { ImagePipe } from '../../pipes/image.pipe';
 
 
 

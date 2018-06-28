@@ -6,10 +6,10 @@ import { ImagePipe } from './image.pipe';
     CommonModule
   ],
   declarations: [
-    ImagePipe
+   // ImagePipe
   ],
   exports: [
-    ImagePipe
+    // ImagePipe
   ]
 })
 export class PipesModule { }

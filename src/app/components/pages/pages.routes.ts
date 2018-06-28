@@ -17,6 +17,7 @@ import { MedicosComponent } from './admin/medicos/medicos.component';
 import { MedicoComponent } from './admin/medicos/medico.component';
 import { ExplorerComponent } from './explorer/explorer.component';
 import { AdminGuard } from '../../services/GUARDS/admin.guard';
+import { RenovaTokenGuard } from '../../services/GUARDS/renova-token.guard';
 
 
 
@@ -25,32 +26,32 @@ const routes: Routes = [
         component: PagesComponent,
         canActivate: [LoginGuard],
         children: [ */
-            { path: 'dashboard', component: DashboardComponent, data: {title: 'Panel de control'} },
-            { path: 'about', component: AboutComponent, data: {title: 'Perfil'}  },
-            { path: 'contact', component: ContactComponent, data: {title: 'Contacto'}  },
-            { path: 'progress', component: ProgressComponent, data: {title: 'Barra de progreso'}  },
-            { path: 'charts', component: ChartComponent, data: {title: 'Gráficas'}  },
-            { path: 'themes', component: ThemeComponent, data: {title: 'Temas'}  },
-            { path: 'promises', component: PromisesComponent, data: {title: 'Promesas'}  },
-            { path: 'rxjs', component: RxjsComponent, data: {title: 'RxJS'}  },
-            { path: 'profile', component: ProfileComponent, data: {title: 'Perfil'}  },
+            { path: 'dashboard', canActivate: [RenovaTokenGuard], component: DashboardComponent, data: {title: 'Panel de control'} },
+            { path: 'about', canActivate: [RenovaTokenGuard], component: AboutComponent, data: {title: 'Perfil'}  },
+            { path: 'contact', canActivate: [RenovaTokenGuard], component: ContactComponent, data: {title: 'Contacto'}  },
+            { path: 'progress', canActivate: [RenovaTokenGuard], component: ProgressComponent, data: {title: 'Barra de progreso'}  },
+            { path: 'charts', canActivate: [RenovaTokenGuard], component: ChartComponent, data: {title: 'Gráficas'}  },
+            { path: 'themes', canActivate: [RenovaTokenGuard], component: ThemeComponent, data: {title: 'Temas'}  },
+            { path: 'promises', canActivate: [RenovaTokenGuard], component: PromisesComponent, data: {title: 'Promesas'}  },
+            { path: 'rxjs', canActivate: [RenovaTokenGuard], component: RxjsComponent, data: {title: 'RxJS'}  },
+            { path: 'profile', canActivate: [RenovaTokenGuard], component: ProfileComponent, data: {title: 'Perfil'}  },
             // admin routes
             { path: 'usuarios', component: UsuariosComponent,
-              canActivate: [AdminGuard],
+              canActivate: [AdminGuard, RenovaTokenGuard],
               data: {title: 'Usuarios Registrados'}
             },
             { path: 'Hospital',
-             canActivate: [AdminGuard],
+             canActivate: [AdminGuard, RenovaTokenGuard],
              component: HospitalesComponent,
              data: {title: 'Hospitales Registrados'}
              },
             { path: 'Medicos',
-            canActivate: [AdminGuard],
+            canActivate: [AdminGuard, RenovaTokenGuard],
             component: MedicosComponent,
             data: {title: 'Medicos Registrados'}
             },
             { path: 'Medico/:id',
-            canActivate: [AdminGuard],
+            canActivate: [AdminGuard, RenovaTokenGuard],
             component: MedicoComponent,
             data: {title: 'Actualizar medico'}
         },

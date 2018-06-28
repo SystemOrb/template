@@ -12,6 +12,7 @@ import { AuthComponent } from '../pages/login/auth.component';
 import { LoginComponent } from '../pages/login/login.component';
 import { RegisterComponent } from '../pages/login/register.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OptionSideBarComponent } from './sidebar/option-side-bar.component';
 
 @NgModule({
   imports: [
@@ -30,18 +31,20 @@ import { HttpClientModule } from '@angular/common/http';
     ModalsComponent,
     AuthComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    OptionSideBarComponent
   ],
   exports: [
     BreadcrumbsComponent,
     FooterComponent,
     HeaderComponent,
     SidebarComponent,
-    ImagePipe,
+     ImagePipe,
     ModalsComponent,
     AuthComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    OptionSideBarComponent
   ]
 })
 export class SharedModule { }

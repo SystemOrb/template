@@ -20,6 +20,7 @@ import { RegisterComponent } from './components/pages/login/register.component';
 import { NotfoundComponent } from './components/pages/notfound/notfound.component';
 
 
+
 /*
 Quitamos el pagesModule porque lo carga con lazyLoad
 esto es siempre que queramos cargar los componentes necesarios
